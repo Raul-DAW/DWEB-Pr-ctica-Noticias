@@ -24,44 +24,32 @@ Noticias
 
         @foreach($noticias as $noticia)
 
-            <div class="card mb-3">
-                <div class="card-body">
+        <div class="card mb-3">
+            <div class="card-body">
 
-                    <h3 class="card-title">
-                        {{ $noticia->titulo }}
-                    </h3>
+                <div class="d-flex justify-content-between align-items-center">
+                    <h3 class="card-title">{{ $noticia->titulo }}</h3>
 
-                    <p class="card-text">
-                        {{ $noticia->texto }}
+                    <p class="mb-0">
+                        Publicado: {{ $noticia->tiempoPublicado() }}
                     </p>
-
-                    <a href="{{ route('noticia.show', $noticia) }}"
-                       class="btn btn-secondary">
-                        View
-                    </a>
-
-                    <a href="{{ route('noticia.edit', $noticia) }}"
-                       class="btn btn-secondary">
-                        Edit
-                    </a>
-
-                    <form
-                        action="{{ route('noticia.destroy', $noticia) }}"
-                        method="post"
-                        style="display:inline">
-
-                        @csrf
-                        @method('delete')
-
-                        <input
-                            type="submit"
-                            value="Delete"
-                            class="btn btn-danger">
-
-                    </form>
-
                 </div>
+
+                <div class="card-text">
+    {!! $noticia->html_contenido !!}
+</div>
+
+                <a href="{{ route('noticia.show', $noticia) }}" class="btn btn-secondary">View</a>
+                <a href="{{ route('noticia.edit', $noticia) }}" class="btn btn-secondary">Edit</a>
+
+                <form action="{{ route('noticia.destroy', $noticia) }}" method="post" style="display:inline">
+                    @csrf
+                    @method('delete')
+                    <input type="submit" value="Delete" class="btn btn-danger">
+                </form>
+
             </div>
+        </div>
 
         @endforeach
 

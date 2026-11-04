@@ -13,14 +13,18 @@ Ver noticia
             {{ $noticia->titulo }}
         </h2>
 
+        <p class="text-center">
+            Publicado: {{ $noticia->tiempoPublicado() }}
+        </p>
+
         <hr class="divider">
 
         <div class="card mb-4">
             <div class="card-body">
 
-                <p class="card-text">
-                    {{ $noticia->texto }}
-                </p>
+               <div class="card-text">
+    {!! \Illuminate\Support\Str::markdown($noticia->texto) !!}
+</div>
 
                 <a href="{{ route('noticia.index') }}"
                    class="btn btn-secondary">
@@ -44,8 +48,11 @@ Ver noticia
             <div class="card mb-3">
                 <div class="card-body">
 
+                        <div>
+    {!! \Illuminate\Support\Str::markdown($comentario->mensaje) !!}
+</div>
                     <p>
-                        {{ $comentario->mensaje }}
+                        Publicado: {{ $comentario->tiempoPublicado() }}
                     </p>
 
                     <p>

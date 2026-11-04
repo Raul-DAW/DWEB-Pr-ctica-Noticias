@@ -20,9 +20,9 @@ Comentarios
             <div class="card mb-3">
                 <div class="card-body">
 
-                    <p>
-                        {{ $comentario->mensaje }}
-                    </p>
+                    <div>
+                    {!! \Illuminate\Support\Str::markdown($comentario->mensaje) !!}
+                       </div>
 
                     <p>
                         Valoración:
@@ -33,6 +33,10 @@ Comentarios
                         Noticia:
                         {{ $comentario->noticia_id }}
                     </p>
+
+                       <p>
+                Publicado: {{ $comentario->tiempoPublicado() }}
+            </p>
 
                     <a href="{{ route('comentario.edit', $comentario) }}"
                        class="btn btn-secondary">

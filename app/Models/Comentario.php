@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Comentario extends Model
 {
@@ -16,4 +17,14 @@ class Comentario extends Model
     {
         return $this->belongsTo(Noticia::class);
     }
+
+    public function tiempoPublicado(){
+        return $this->created_at->diffForHumans();
+    }
+
+   public function getHtmlMensajeAttribute()
+{
+    return Str::markdown($this->mensaje);
+}
+
 }

@@ -14,9 +14,8 @@ return new class extends Migration
     Schema::create('comentarios', function (Blueprint $table) {
         $table->id();
 
-        //Noticia a la que pertenece
-        $table->foreignId('noticia_id')
-              ->constrained('noticias');
+       $table->unsignedBigInteger('noticia_id');
+       $table->foreign('noticia_id')->references('id')->on('noticias')->onDelete('cascade');
 
         //Mensaje
         $table->text('mensaje');
