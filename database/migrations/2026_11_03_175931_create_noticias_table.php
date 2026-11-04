@@ -15,7 +15,7 @@ return new class extends Migration
         $table->id();
 
         //Título
-        $table->string('titulo')->unique;
+        $table->string('titulo')->unique();
 
         //Texto largo
         $table->longText('texto');

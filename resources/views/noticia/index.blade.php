@@ -42,11 +42,16 @@ Noticias
                 <a href="{{ route('noticia.show', $noticia) }}" class="btn btn-secondary">View</a>
                 <a href="{{ route('noticia.edit', $noticia) }}" class="btn btn-secondary">Edit</a>
 
+
+                 @if($noticia->comentarios->count() == 0)
+
                 <form action="{{ route('noticia.destroy', $noticia) }}" method="post" style="display:inline">
                     @csrf
                     @method('delete')
                     <input type="submit" value="Delete" class="btn btn-danger">
                 </form>
+
+                @endif
 
             </div>
         </div>
